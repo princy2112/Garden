@@ -1,24 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Earth</title>
+<meta charset="UTF-8">
+<title>Le Monde Tremblant</title>
+<style>
+body {
+    background-color: black;
+    color: red;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.tremble {
+    font-size: 2em;
+    position: absolute;
+    animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); }
+    100% { transform: translate(-2px, -2px); }
+}
+</style>
 </head>
 <body>
-  <p>Ô toi, le plus savant et le plus beau des Anges,
-Dieu trahi par le sort et privé de louanges,
+<div id="container"></div>
 
-Ô Satan, prends pitié de ma longue misère !
+<script>
+const container = document.getElementById('container');
+const message = "LE MONDE EST-IL CASSÉ ?";
 
-Ô Prince de l’exil, à qui l’on a fait tort,
-Et qui, vaincu, toujours te redresses plus fort,
-
-Ô Satan, prends pitié de ma longue misère !
-
-Toi qui sais tout, grand roi des choses souterraines,
-Guérisseur familier des angoisses humaines,
-
-Ô Satan, prends pitié de ma longue misère !</p>
+// Boucle infinie
+for(let i = 0; i < 50; i++) { // 50 répétitions, tu peux augmenter
+    const span = document.createElement('div');
+    span.className = 'tremble';
+    span.textContent = message;
+    
+    // Décalage aléatoire pour donner plus d'effet
+    span.style.top = `${Math.random() * 80}%`;
+    span.style.left = `${Math.random() * 80}%`;
+    
+    container.appendChild(span);
+}
+</script>
 </body>
 </html>
