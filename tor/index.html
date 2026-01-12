@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>TOR // NODE ACCESS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#0f0;
+  font-family:'Share Tech Mono', monospace;
+  overflow:hidden;
+}
+
+.crt::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,.18) 3px
+  );
+  pointer-events:none;
+}
+
+.container{
+  padding:30px;
+  max-width:900px;
+}
+
+.header{
+  color:#b30000;
+  margin-bottom:20px;
+}
+
+.log{
+  white-space:pre-line;
+  font-size:.85rem;
+  line-height:1.5;
+}
+
+.progress{
+  margin-top:25px;
+}
+
+.bar{
+  width:100%;
+  height:14px;
+  background:#111;
+  border:1px solid #0f0;
+}
+
+.fill{
+  width:0%;
+  height:100%;
+  background:#0f0;
+  animation:load 6s forwards;
+}
+
+@keyframes load{
+  to{width:100%;}
+}
+
+.enter{
+  opacity:0;
+  margin-top:30px;
+  animation:show 1s forwards;
+  animation-delay:6.2s;
+}
+
+.enter a{
+  color:#0f0;
+  text-decoration:none;
+  border:1px solid #0f0;
+  padding:10px 18px;
+}
+
+.enter a:hover{
+  background:#0f0;
+  color:#000;
+}
+
+@keyframes show{to{opacity:1}}
+</style>
+</head>
+<body class="crt">
+
+<div class="container">
+<div class="header">INTRANET-[§!Ɫ₭ ‖Ø∆Ð]</div>
+
+<div class="log">
+Connexion établie sur le NŒUD //V3N64NC3//
+Réseau non indexé
+
+AVERTISSEMENT :
+Toute tentative de traçage déclenchera un effacement automatique des données locales
+
+[ÉTAT DU NŒUD]
+> Relais TOR : STABLE
+> Chiffrement multi-couches : ACTIF
+> Proxy fantôme : OPÉRATIONNEL
+> Journalisation : DÉSACTIVÉE
+> Contre-mesures actives : OUI
+
+Authentification secondaire requise
+HANDLE : N*****AN
+CLÉ PRIVÉE : ************
+
+Vérification en cours...
+</div>
+
+<div class="progress">
+  <div class="bar"><div class="fill"></div></div>
+</div>
+
+<div class="enter">
+  >>> CONTENEUR OUVERT<br><br>
+  <a href="redhit.html">ACCÉDER AUX DONNÉES</a>
+</div>
+</div>
+
+</body>
+</html>
