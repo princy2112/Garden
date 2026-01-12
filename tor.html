@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>INTRANET // TOR NODE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  background:#000;
+  color:#0f0;
+  font-family:'Share Tech Mono', monospace;
+  overflow:hidden;
+}
+
+.scanlines::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,.15) 3px
+  );
+  pointer-events:none;
+}
+
+.container{
+  padding:30px;
+  max-width:900px;
+}
+
+.title{
+  color:#b30000;
+  font-size:1.2rem;
+  margin-bottom:20px;
+}
+
+.log{
+  white-space:pre-line;
+  font-size:.85rem;
+  line-height:1.4;
+}
+
+.progress{
+  margin-top:20px;
+}
+
+.bar{
+  height:14px;
+  width:100%;
+  background:#111;
+  border:1px solid #0f0;
+}
+
+.fill{
+  height:100%;
+  width:0%;
+  background:#0f0;
+  animation:load 5s forwards;
+}
+
+@keyframes load{
+  to{width:100%;}
+}
+
+.access{
+  margin-top:30px;
+  opacity:0;
+  animation:show 1s forwards;
+  animation-delay:5.2s;
+}
+
+.access a{
+  color:#0f0;
+  text-decoration:none;
+  border:1px solid #0f0;
+  padding:8px 14px;
+}
+
+.access a:hover{
+  background:#0f0;
+  color:#000;
+}
+
+@keyframes show{to{opacity:1}}
+</style>
+</head>
+<body class="scanlines">
+
+<div class="container">
+<div class="title">INTRANET-[§!Ɫ₭ ‖Ø∆Ð]</div>
+
+<div class="log">
+Connexion établie sur le NŒUD //V3N64NC3//
+Réseau non indexé
+
+AVERTISSEMENT :
+Toute tentative de traçage déclenchera un effacement automatique des données locales
+
+[ÉTAT DU NŒUD]
+> Relais TOR : STABLE
+> Chiffrement multi-couches : ACTIF
+> Proxy fantôme : OPÉRATIONNEL
+> Journalisation : DÉSACTIVÉE
+> Contre-mesures actives : OUI
+
+Authentification secondaire requise
+HANDLE : N*****AN
+CLÉ PRIVÉE : ************
+
+Vérification en cours...
+</div>
+
+<div class="progress">
+  <div class="bar"><div class="fill"></div></div>
+</div>
+
+<div class="access">
+  >>> CONTENEUR OUVERT<br><br>
+  <a href="redhit.html">ACCÉDER AUX DONNÉES</a>
+</div>
+</div>
+
+</body>
+</html>
