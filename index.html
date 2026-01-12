@@ -1,16 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Garden — index</title>
+  <meta charset="UTF-8" />
+  <title>SCP-OS // TERMINAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #b30000;
+      --dark: #050505;
+      --glass: rgba(0,0,0,0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Share Tech Mono', monospace;
+      color: #eee;
+      background: url('https://scp-sandbox-3.wikidot.com/local--files/ananomalouswriter/SCP%20red.jpg') center/cover no-repeat fixed;
+      overflow: hidden;
+    }
+
+    /* GLASS OVERLAY */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+
+    /* DESKTOP */
+    .desktop {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 90px);
+      grid-auto-rows: 110px;
+      gap: 25px;
+    }
+
+    .icon {
+      cursor: pointer;
+      text-align: center;
+      transition: transform .25s ease, filter .25s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 8px var(--red));
+    }
+
+    .icon img {
+      width: 64px;
+      height: 64px;
+      user-select: none;
+    }
+
+    .icon span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* BOOT TEXT */
+    .boot {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 0.75rem;
+      opacity: .7;
+    }
+
+    /* FADE TRANSITION */
+    .fade-out {
+      animation: fadeOut .6s forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenue — Garden</h1>
-  <p>Choisis une page :</p>
-  <ul>
-    <li><a href="garden.html">garden.html</a></li>
-    <li><a href="earth.html">earth.html</a></li>
-  </ul>
+
+  <div class="desktop" id="desktop">
+
+    <div class="icon" onclick="go('portfolio.html')">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png">
+      <span>RECHERCHES</span>
+    </div>
+
+    <div class="icon" onclick="go('dossier.html')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png">
+      <span>DOSSIER PERSONNEL</span>
+    </div>
+
+    <div class="icon" onclick="go('messages.html')">
+      <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png">
+      <span>MESSAGERIE</span>
+    </div>
+
+    <div class="icon" onclick="go('tor/index.html')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tor_Browser_icon.svg/2048px-Tor_Browser_icon.svg.png">
+      <span>TOR</span>
+    </div>
+
+  </div>
+
+  <div class="boot">
+    NODE //V3N64NC3// — Chiffrement actif — Journalisation désactivée
+  </div>
+
+  <script>
+    function go(url) {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 600);
+    }
+  </script>
+
 </body>
 </html>
