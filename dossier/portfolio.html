@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>PORTFOLIO // EXPÉRIENCES SCP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  background:#020202;
+  color:#ddd;
+  font-family:'Share Tech Mono', monospace;
+}
+
+.noise::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 2px,
+    rgba(255,255,255,.05) 3px
+  );
+  pointer-events:none;
+}
+
+.container{
+  max-width:900px;
+  margin:50px auto;
+  padding:20px;
+}
+
+h1{
+  color:#b30000;
+  margin-bottom:30px;
+}
+
+.project{
+  border:1px solid #444;
+  padding:15px;
+  margin-bottom:20px;
+  background:rgba(0,0,0,.6);
+}
+
+.title{
+  font-size:1rem;
+  margin-bottom:5px;
+}
+
+.status{
+  font-size:.75rem;
+  padding:3px 8px;
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+.fini{background:#0a3; color:#000;}
+.encours{background:#c90; color:#000;}
+.invalid{background:#900;}
+
+.desc{
+  font-size:.8rem;
+  opacity:.7;
+}
+
+.footer{
+  margin-top:40px;
+  font-size:.7rem;
+  opacity:.4;
+}
+</style>
+</head>
+<body class="noise">
+
+<div class="container">
+<h1>PORTFOLIO / EXPÉRIENCES</h1>
+
+<div class="project">
+  <div class="title">Projet A-17 — Stabilisation d'entité mémétique</div>
+  <div class="status fini">FINI</div>
+  <div class="desc">Dossier archivé. Accès ultérieur refusé.</div>
+</div>
+
+<div class="project">
+  <div class="title">Expérience K-██ — Interface homme-anomalie</div>
+  <div class="status encours">EN COURS</div>
+  <div class="desc">Surveillance renforcée. Résultats instables.</div>
+</div>
+
+<div class="project">
+  <div class="title">Protocole Θ-9 — Confinement alternatif</div>
+  <div class="status invalid">INVALID</div>
+  <div class="desc">Échec critique. Données partiellement corrompues.</div>
+</div>
+
+<div class="project">
+  <div class="title">Étude ██-M — Rémanence cognitive post-contact</div>
+  <div class="status encours">EN COURS</div>
+  <div class="desc">Tests humains suspendus.</div>
+</div>
+
+<div class="footer">
+Fondation SCP — base de données interne — version non publique
+</div>
+</div>
+
+</body>
+</html>
