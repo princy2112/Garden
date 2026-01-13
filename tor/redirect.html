@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>NŒUD EXTERNE</title>
-<meta http-equiv="refresh" content="6">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 <style>
 body{
   margin:0;
@@ -23,24 +23,51 @@ body{
   animation:flicker 1.5s infinite;
 }
 
+.choices{
+  margin-top:30px;
+  display:flex;
+  gap:40px;
+  justify-content:center;
+}
+
+.choice{
+  border:1px solid #b30000;
+  padding:12px 22px;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.choice:hover{
+  background:#b30000;
+  color:black;
+  box-shadow:0 0 10px #b30000;
+}
+
 @keyframes flicker{
   0%,100%{opacity:1}
-  50%{opacity:.4}
+  50%{opacity:.45}
 }
 </style>
 </head>
+
 <body>
-<div class="box">
-  <p>Routage instable…</p>
-  <p>Sélection de destination</p>
-</div>
+  <div class="box">
+    <p>Routage instable…</p>
+    <p>Sélection de destination requise</p>
+
+    <div class="choices">
+      <div class="choice" onclick="go('earth.html')">EARTH</div>
+      <div class="choice" onclick="go('garden.html')">GARDEN</div>
+    </div>
+  </div>
 
 <script>
-const targets = ['earth.html','garden.html'];
-setTimeout(()=>{
-  const choice = targets[Math.floor(Math.random()*targets.length)];
-  window.location.href = choice;
-}, 3000);
+function go(target){
+  document.body.style.opacity = 0.2;
+  setTimeout(() => {
+    window.location.href = target;
+  }, 600);
+}
 </script>
 </body>
 </html>
