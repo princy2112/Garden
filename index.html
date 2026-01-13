@@ -110,16 +110,16 @@
       <span>MESSAGERIE</span>
     </div>
 
-    <div class="icon" onclick="go('tor/index.html')">
+    <div class="icon" id="torIcon" style="display:none" onclick="go('tor/index.html')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tor_Browser_icon.svg/2048px-Tor_Browser_icon.svg.png">
       <span>TOR</span>
     </div>
 
   </div>
 
-  <div class="boot">
-    NODE //V3N64NC3// — Chiffrement actif — Journalisation désactivée
-  </div>
+<div class="boot" id="systemText">
+  NODE //V3N64NC3// — Chiffrement actif — Journalisation désactivée
+</div>
 
   <script>
     function go(url) {
@@ -129,6 +129,24 @@
       }, 600);
     }
   </script>
+
+  <script>
+let clicks = 0;
+const system = document.getElementById('systemText');
+const tor = document.getElementById('torIcon');
+
+system.addEventListener('click', () => {
+  clicks++;
+  if (clicks === 3) {
+    tor.style.display = 'block';
+    tor.style.animation = 'fadeIn .6s ease';
+
+    system.textContent = '⚠ Processus non autorisé détecté';
+  }
+
+  setTimeout(() => clicks = 0, 1500);
+});
+</script>
 
 </body>
 </html>
