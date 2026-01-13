@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MESSAGERIE // RÉSEAU INTERNE SCP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  background:#020202;
+  color:#ddd;
+  font-family:'Share Tech Mono', monospace;
+}
+
+.scan::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 2px,
+    rgba(255,255,255,.06) 3px
+  );
+  pointer-events:none;
+}
+
+.container{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  height:100vh;
+}
+
+.sidebar{
+  border-right:1px solid #333;
+  padding:20px;
+  background:rgba(0,0,0,.6);
+}
+
+.sidebar h2{
+  color:#b30000;
+  font-size:1rem;
+  margin-bottom:20px;
+}
+
+.contact{
+  padding:10px;
+  border:1px solid #444;
+  margin-bottom:12px;
+  cursor:pointer;
+  transition:background .2s, box-shadow .2s;
+}
+
+.contact:hover{
+  background:#100000;
+  box-shadow:0 0 6px #b30000;
+}
+
+.contact small{
+  display:block;
+  font-size:.7rem;
+  opacity:.6;
+}
+
+.chat{
+  padding:30px;
+}
+
+.chat h3{
+  color:#b30000;
+  margin-bottom:20px;
+}
+
+.message{
+  margin-bottom:15px;
+  max-width:70%;
+}
+
+.from-them{
+  opacity:.85;
+}
+
+.from-you{
+  margin-left:auto;
+  text-align:right;
+  opacity:.9;
+}
+
+.placeholder{
+  opacity:.5;
+  font-style:italic;
+}
+
+.footer{
+  position:absolute;
+  bottom:10px;
+  right:20px;
+  font-size:.65rem;
+  opacity:.4;
+}
+</style>
+</head>
+<body class="scan">
+
+<div class="container">
+
+  <div class="sidebar">
+    <h2>CONTACTS</h2>
+
+    <div class="contact">
+      Directeur ██████<small>Fondation SCP</small>
+    </div>
+
+    <div class="contact">
+      Dr H. Kessler<small>Recherche mémétique</small>
+    </div>
+
+    <div class="contact">
+      Assistante A-12<small>Support laboratoire</small>
+    </div>
+
+    <div class="contact">
+      [CONTACT EXTERNE]<small>Relation non déclarée</small>
+    </div>
+  </div>
+
+  <div class="chat">
+    <h3>Canal sécurisé</h3>
+
+    <div class="message from-them">
+      <p class="placeholder">— Messages chiffrés indisponibles —</p>
+    </div>
+
+    <div class="message from-you">
+      <p class="placeholder">— En attente de synchronisation —</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+Réseau interne SCP — journalisation active
+</div>
+
+</body>
+</html>
