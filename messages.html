@@ -143,5 +143,32 @@ body{
 Réseau interne SCP — journalisation active
 </div>
 
+<script>
+// RARE GLITCH EVENT (≈2% par chargement)
+(function(){
+  if (Math.random() > 0.02) return;
+
+  const glitch = document.createElement('div');
+  glitch.style.position = 'fixed';
+  glitch.style.inset = 0;
+  glitch.style.background = 'rgba(180,0,0,0.15)';
+  glitch.style.mixBlendMode = 'screen';
+  glitch.style.zIndex = 9999;
+  glitch.style.pointerEvents = 'none';
+  document.body.appendChild(glitch);
+
+  let count = 0;
+  const interval = setInterval(() => {
+    document.body.style.transform = `translate(${(Math.random()-0.5)*6}px, ${(Math.random()-0.5)*6}px)`;
+    glitch.style.opacity = Math.random();
+    count++;
+    if (count > 12) {
+      clearInterval(interval);
+      document.body.style.transform = '';
+      glitch.remove();
+    }
+  }, 60);
+})();
+</script>
 </body>
 </html>
