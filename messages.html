@@ -172,9 +172,11 @@ Réseau interne SCP — journalisation active
 </script>
 
 <script>
-function goBack(){
-  history.back();
-}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Backspace") {
+    history.back();
+  }
+});
 </script>
   
 </body>
