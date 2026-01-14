@@ -50,5 +50,14 @@ for(let i = 0; i < 50; i++) {
     container.appendChild(span);
 }
 </script>
+
+<script>
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Backspace") {
+    history.back();
+  }
+});
+</script>
+
 </body>
 </html>
