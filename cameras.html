@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>SURVEILLANCE LABORATOIRE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background:black;
+  font-family:'Share Tech Mono', monospace;
+  overflow:hidden;
+}
+
+
+.noise{
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #111 0px,
+      #111 1px,
+      #000 2px
+    );
+  animation: noiseMove 0.15s infinite;
+  opacity:.8;
+}
+
+
+.glitch{
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.03);
+  mix-blend-mode:overlay;
+  animation: glitchFlash 6s infinite;
+}
+
+/* 📄 TEXTE */
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#aaa;
+  z-index:3;
+}
+
+.box{
+  border:1px solid #333;
+  padding:30px 40px;
+  background:rgba(0,0,0,.7);
+}
+
+.box h2{
+  margin:0 0 10px;
+  color:#b30000;
+  font-size:1.2rem;
+}
+
+.box p{
+  font-size:.85rem;
+  opacity:.7;
+}
+
+
+.back-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  padding:6px 12px;
+  border:1px solid #b30000;
+  color:#b30000;
+  font-size:.7rem;
+  cursor:pointer;
+  background:rgba(0,0,0,.6);
+  z-index:10;
+}
+.back-btn:hover{
+  background:#b30000;
+  color:black;
+  box-shadow:0 0 8px #b30000;
+}
+
+/* 🎞️ ANIMATIONS */
+@keyframes noiseMove{
+  0%{background-position:0 0}
+  100%{background-position:0 4px}
+}
+
+@keyframes glitchFlash{
+  0%,95%,100%{opacity:0}
+  96%{opacity:.15}
+  97%{opacity:.05}
+  98%{opacity:.2}
+}
+</style>
+</head>
+
+<body>
+
+<div class="back-btn" onclick="history.back()">← RETOUR</div>
+
+<div class="noise"></div>
+<div class="glitch"></div>
+
+<div class="overlay">
+  <div class="box">
+    <h2>CAMÉRA HORS LIGNE</h2>
+    <p>SIGNAL INEXISTANT</p>
+    <p>Source : Laboratoire principal</p>
+  </div>
+</div>
+
+<script>
+
+(function(){
+  if(Math.random() > 0.03) return;
+
+  let count = 0;
+  const interval = setInterval(()=>{
+    document.body.style.transform =
+      `translate(${(Math.random()-0.5)*10}px, ${(Math.random()-0.5)*10}px)`;
+    count++;
+    if(count > 8){
+      document.body.style.transform='';
+      clearInterval(interval);
+    }
+  },50);
+})();
+</script>
+
+</body>
+</html>
