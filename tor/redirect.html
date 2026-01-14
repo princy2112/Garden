@@ -71,10 +71,13 @@ function go(target){
 </script>
 
 <script>
-function goBack(){
-  history.back();
-}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Backspace") {
+    history.back();
+  }
+});
 </script>
+
 
 </body>
 </html>
