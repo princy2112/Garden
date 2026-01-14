@@ -1,225 +1,262 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>SCP-OS // TERMINAL</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>SCP-OS // TERMINAL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --red: #b30000;
-      --dark: #050505;
-      --glass: rgba(0,0,0,0.55);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: 'Share Tech Mono', monospace;
-      color: #eee;
-      background: url('https://scp-sandbox-3.wikidot.com/local--files/ananomalouswriter/SCP%20red.jpg') center/cover no-repeat fixed;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(2px);
-      z-index: 0;
-    }
-
-    .desktop {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 90px);
-      grid-auto-rows: 110px;
-      gap: 25px;
-    }
-
-    .icon {
-      cursor: pointer;
-      text-align: center;
-      transition: transform .25s ease, filter .25s ease;
-    }
-
-    .icon:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 8px var(--red));
-    }
-
-    .icon img {
-      width: 64px;
-      height: 64px;
-      user-select: none;
-    }
-
-    .icon span {
-      display: block;
-      margin-top: 6px;
-      font-size: 0.8rem;
-    }
-
-    .icon.trash{
-      position:fixed;
-      bottom:20px;
-      left:20px;
-    }
-
-    .back-btn{
-      position:fixed;
-      top:20px;
-      left:20px;
-      padding:6px 12px;
-      border:1px solid #b30000;
-      color:#b30000;
-      font-family:'Share Tech Mono', monospace;
-      font-size:.75rem;
-      cursor:pointer;
-      background:rgba(0,0,0,.6);
-      z-index:9999;
-      transition:all .2s ease;
-    }
-
-.back-btn:hover{
-  background:#b30000;
-  color:black;
-  box-shadow:0 0 8px #b30000;
+<style>
+:root{
+  --red:#b30000;
 }
 
+*{box-sizing:border-box}
 
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Share Tech Mono', monospace;
+  color:#eee;
+  background:url('https://scp-sandbox-3.wikidot.com/local--files/ananomalouswriter/SCP%20red.jpg') center/cover no-repeat fixed;
+  overflow:hidden;
+}
 
-    .boot {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      font-size: 0.75rem;
-      opacity: .7;
-      cursor: pointer;
-    }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(2px);
+  z-index:0;
+}
 
-    .fade-out {
-      animation: fadeOut .6s forwards;
-    }
+/* DESKTOP */
+.desktop{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  padding:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,90px);
+  grid-auto-rows:110px;
+  gap:25px;
+}
 
-    @keyframes fadeOut { to { opacity: 0; } }
+.icon{
+  text-align:center;
+  cursor:pointer;
+  transition:.25s;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
+.icon:hover{
+  transform:scale(1.1);
+  filter:drop-shadow(0 0 8px var(--red));
+}
 
-    #cmd {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 420px;
-      background: black;
-      border: 1px solid var(--red);
-      padding: 10px;
-      font-size: .85rem;
-      color: #0f0;
-      z-index: 9999;
-    }
+.icon img{
+  width:64px;
+  height:64px;
+  user-select:none;
+}
 
-    #cmd input {
-      width: 100%;
-      background: black;
-      border: none;
-      outline: none;
-      color: #0f0;
-      font-family: inherit;
-    }
-  </style>
+.icon span{
+  display:block;
+  margin-top:6px;
+  font-size:.8rem;
+}
+
+/* CORBEILLE */
+.icon.trash{
+  position:fixed;
+  bottom:55px;
+  left:20px;
+}
+
+/* TEXTE SYSTÈME */
+.boot{
+  position:fixed;
+  bottom:15px;
+  left:20px;
+  font-size:.7rem;
+  opacity:.6;
+  z-index:2;
+}
+
+/* HINT RETOUR */
+.hint{
+  position:fixed;
+  bottom:15px;
+  right:20px;
+  font-size:.65rem;
+  opacity:.45;
+  z-index:2;
+}
+
+/* CMD */
+#cmd{
+  display:none;
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  width:420px;
+  background:black;
+  border:1px solid var(--red);
+  padding:10px;
+  font-size:.85rem;
+  color:#0f0;
+  z-index:9999;
+}
+
+#cmd input{
+  width:100%;
+  background:black;
+  border:none;
+  outline:none;
+  color:#0f0;
+  font-family:inherit;
+}
+
+/* LOCKSCREEN */
+#lockscreen{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.lockbox{
+  text-align:center;
+  color:var(--red);
+}
+
+.lockbox input{
+  margin-top:10px;
+  background:black;
+  border:1px solid var(--red);
+  color:var(--red);
+  padding:8px;
+  font-family:inherit;
+  outline:none;
+}
+
+#error{
+  margin-top:10px;
+  font-size:.7rem;
+  opacity:.7;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="back-btn" onclick="goBack()">
-  ← RETOUR
+<!-- LOCKSCREEN -->
+<div id="lockscreen">
+  <div class="lockbox">
+    <p>AUTHENTIFICATION REQUISE</p>
+    <input type="password" id="pwd" placeholder="Mot de passe">
+    <div id="error"></div>
+  </div>
+</div>
+
+<!-- DESKTOP -->
+<div class="desktop">
+
+  <div class="icon" onclick="window.open('http://fondationscp.wikidot.com/','_blank')">
+    <img src="https://upload.wikimedia.org/wikipedia/en/0/0a/Logo_of_the_SCP_Foundation.png">
+    <span>FONDATION SCP</span>
   </div>
 
-
-  <div class="desktop" id="desktop">
-
-    <div class="icon" onclick="window.open('http://fondationscp.wikidot.com/','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/0a/Logo_of_the_SCP_Foundation.png">
-      <span>FONDATION SCP</span>
-    </div>
-
-    <div class="icon" onclick="go('dossier.html')">
-      <img src="https://icones.pro/wp-content/uploads/2021/04/icone-de-dossier-symbole-png-rouge.png">
-      <span>DOSSIER</span>
-    </div>
-
-    <div class="icon" onclick="go('messages.html')">
-      <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png">
-      <span>MESSAGES</span>
-    </div>
-
-    <div class="icon" id="torIcon" style="display:none" onclick="go('tor/index.html')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tor_Browser_icon.svg/2048px-Tor_Browser_icon.svg.png">
-      <span>TOR</span>
-    </div>
-
-    <div class="icon trash" onclick="go('trash.html')">
-      <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png">
-      <span>Corbeille</span>
-    </div>
-
+  <div class="icon" onclick="go('dossier.html')">
+    <img src="https://icones.pro/wp-content/uploads/2021/04/icone-de-dossier-symbole-png-rouge.png">
+    <span>DOSSIER</span>
   </div>
 
-  <div class="boot" id="systemText">
-    NODE //V3N64NC3// — Chiffrement actif — Journalisation désactivée
+  <div class="icon" onclick="go('messages.html')">
+    <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png">
+    <span>MESSAGES</span>
   </div>
 
-  <div id="cmd">
-    <div>> SYSTEM TERMINAL</div>
-    <input id="cmdInput" type="text" autocomplete="off">
+  <div class="icon" id="torIcon" style="display:none" onclick="go('tor/index.html')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tor_Browser_icon.svg/2048px-Tor_Browser_icon.svg.png">
+    <span>TOR</span>
   </div>
 
-  <script>
-    function go(url) {
-      document.body.classList.add('fade-out');
-      setTimeout(() => window.location.href = url, 600);
+  <div class="icon trash" onclick="go('trash.html')">
+    <img src="https://cdn-icons-png.flaticon.com/512/3096/3096673.png">
+    <span>CORBEILLE</span>
+  </div>
+
+</div>
+
+<div class="boot">
+NODE //V3N64NC3// — Chiffrement actif — Journalisation désactivée
+</div>
+
+<div class="hint">
+Appuyer sur [BACKSPACE] pour retour
+</div>
+
+<!-- CMD -->
+<div id="cmd">
+  <div>> SYSTEM TERMINAL</div>
+  <input id="cmdInput" autocomplete="off">
+</div>
+
+<script>
+/* NAV */
+function go(url){
+  document.body.style.opacity=.3;
+  setTimeout(()=>location.href=url,600);
+}
+
+/* CMD */
+const cmd=document.getElementById("cmd");
+const input=document.getElementById("cmdInput");
+const tor=document.getElementById("torIcon");
+
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey && e.altKey && e.key==="c"){
+    cmd.style.display="block";
+    input.focus();
+  }
+  if(e.key==="Escape") cmd.style.display="none";
+  if(e.key==="Backspace") history.back();
+});
+
+input.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    if(input.value.toLowerCase().trim()==="enable tor"){
+      tor.style.display="block";
+      cmd.innerHTML+="<div>> TOR ENABLED</div>";
+    }else{
+      cmd.innerHTML+="<div>> UNKNOWN COMMAND</div>";
     }
+    input.value="";
+  }
+});
 
-    const cmd = document.getElementById('cmd');
-    const input = document.getElementById('cmdInput');
-    const tor = document.getElementById('torIcon');
+/* LOCKSCREEN */
+const correctPassword="SCP-███";
+const pwd=document.getElementById("pwd");
+const error=document.getElementById("error");
+const lock=document.getElementById("lockscreen");
 
-    document.addEventListener('keydown', e => {
-      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'c') {
-        cmd.style.display = 'block';
-        input.focus();
-      }
-      if (e.key === 'Escape') {
-        cmd.style.display = 'none';
-      }
-    });
-
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        const value = input.value.toLowerCase().trim();
-        if (value === 'enable tor') {
-          tor.style.display = 'block';
-          tor.style.animation = 'fadeIn .6s ease';
-          cmd.innerHTML += '<div>> TOR ENABLED</div>';
-        } else {
-          cmd.innerHTML += '<div>> UNKNOWN COMMAND</div>';
-        }
-        input.value = '';
-      }
-    });
-  </script>
+pwd.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    if(pwd.value===correctPassword){
+      lock.style.display="none";
+    }else{
+      error.textContent="ACCÈS REFUSÉ";
+      pwd.value="";
+    }
+  }
+});
+</script>
 
 </body>
 </html>
