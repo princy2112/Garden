@@ -107,9 +107,11 @@ Fondation SCP — base de données interne — version non publique
 </div>
 
 <script>
-function goBack(){
-  history.back();
-}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Backspace") {
+    history.back();
+  }
+});
 </script>
 
 </body>
