@@ -74,6 +74,28 @@
       left:20px;
     }
 
+    .back-btn{
+      position:fixed;
+      top:20px;
+      left:20px;
+      padding:6px 12px;
+      border:1px solid #b30000;
+      color:#b30000;
+      font-family:'Share Tech Mono', monospace;
+      font-size:.75rem;
+      cursor:pointer;
+      background:rgba(0,0,0,.6);
+      z-index:9999;
+      transition:all .2s ease;
+    }
+
+.back-btn:hover{
+  background:#b30000;
+  color:black;
+  box-shadow:0 0 8px #b30000;
+}
+
+
 
     .boot {
       position: absolute;
@@ -120,6 +142,11 @@
   </style>
 </head>
 <body>
+
+  <div class="back-btn" onclick="goBack()">
+  ← RETOUR
+  </div>
+
 
   <div class="desktop" id="desktop">
 
