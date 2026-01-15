@@ -2,96 +2,262 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>FILE EXPLORER</title>
+<title>ARCHIVES // PROTOCOLES SCP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  background:#020202;
-  color:#ddd;
-  font-family:'Share Tech Mono', monospace;
+:root{
+  --red:#b30000;
+  --blue:#0066cc;
+  --bg:#050505;
+  --panel:rgba(0,0,0,.75);
 }
 
-.header{
-  padding:15px 20px;
-  border-bottom:1px solid #333;
-  color:#b30000;
+body{
+  margin:0;
+  background:var(--bg);
+  color:#ddd;
+  font-family:'Share Tech Mono', monospace;
+  height:100vh;
+  overflow:hidden;
+}
+
+.scan::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 2px,
+    rgba(255,255,255,.05) 3px
+  );
+  pointer-events:none;
+}
+
+header{
+  padding:20px;
+  border-bottom:1px solid #222;
+  color:var(--red);
+  font-size:.9rem;
 }
 
 .container{
+  display:flex;
+  height:calc(100vh - 60px);
+}
+
+.sidebar{
+  width:260px;
+  border-right:1px solid #222;
   padding:20px;
 }
 
-button{
-  background:black;
-  border:1px solid #b30000;
-  color:#b30000;
-  padding:8px 16px;
+.folder{
+  border:1px solid #333;
+  padding:10px;
+  margin-bottom:12px;
   cursor:pointer;
-  font-family:inherit;
-}
-button:hover{
-  background:#b30000;
-  color:black;
+  transition:.2s;
 }
 
-.file{
-  margin-top:10px;
-  border-bottom:1px solid #222;
-  padding:6px 0;
-  font-size:.8rem;
+.folder:hover{
+  background:#120000;
+  box-shadow:0 0 8px var(--red);
 }
 
-.back-btn{
+.folder.blue:hover{
+  background:#001020;
+  box-shadow:0 0 8px var(--blue);
+}
+
+.folder span{
+  display:block;
+  font-size:.75rem;
+  opacity:.6;
+}
+
+.content{
+  flex:1;
+  padding:30px;
+  overflow-y:auto;
+}
+
+.panel{
+  display:none;
+  background:var(--panel);
+  border:1px solid var(--red);
+  padding:25px;
+  animation:fade .4s ease;
+}
+
+.panel.blue{
+  border-color:var(--blue);
+}
+
+.panel h2{
+  color:var(--red);
+  margin-top:0;
+}
+
+.panel.blue h2{
+  color:var(--blue);
+}
+
+.panel h3{
+  margin-top:25px;
+  color:#eee;
+}
+
+.panel p, .panel li{
+  font-size:.85rem;
+  line-height:1.6;
+  opacity:.9;
+}
+
+ul{padding-left:18px;}
+
+.footer{
   position:fixed;
-  top:20px;
-  left:20px;
-  padding:6px 12px;
-  border:1px solid #b30000;
-  color:#b30000;
-  font-size:.7rem;
-  cursor:pointer;
-  background:rgba(0,0,0,.6);
+  bottom:10px;
+  right:20px;
+  font-size:.65rem;
+  opacity:.4;
 }
-.back-btn:hover{
-  background:#b30000;
-  color:black;
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(5px)}
+  to{opacity:1}
 }
 </style>
 </head>
 
-<body>
+<body class="scan">
 
-<div class="back-btn" onclick="history.back()">← RETOUR</div>
-
-<div class="header">
-  EXPLORATEUR DE FICHIERS — ACCÈS LOCAL
-</div>
+<header>
+ARCHIVES PUBLIQUES — ACCÈS NIVEAU 2
+</header>
 
 <div class="container">
-  <p>Sélectionner un dossier local :</p>
-  <input type="file" webkitdirectory multiple id="picker">
 
-  <div id="list"></div>
+  <div class="sidebar">
+
+    <div class="folder" onclick="openPanel('deconf')">
+      📁 Protocole de Déconfinement
+      <span>Urgence / Sécurité</span>
+    </div>
+
+    <div class="folder" onclick="openPanel('diplo')">
+      📁 Protocole Diplomatique
+      <span>Affaires Externes</span>
+    </div>
+
+    <div class="folder" onclick="openPanel('science')">
+      📁 Protocole Scientifique
+      <span>Département Recherche</span>
+    </div>
+
+    <div class="folder blue" onclick="openPanel('private')">
+      🔵 Dossiers Privés
+      <span>Accès restreint</span>
+    </div>
+
+  </div>
+
+  <div class="content">
+
+<!-- DÉCONFINEMENT -->
+<div class="panel" id="deconf">
+<h2>PROTOCOLE DE DÉCONFINEMENT</h2>
+
+<p>
+En cas de déconfinement d’un SCP (hors classe Sûr), un avertissement radio doit être immédiatement émis afin de prévenir :
+</p>
+
+<ul>
+<li>Administration du site (Co-Directeur +)</li>
+<li>Haute Sécurité (AIT, CLN, DDLS)</li>
+</ul>
+
+<h3>Réponses</h3>
+<ul>
+<li><b>Classe Euclide</b> : équipes tactiques et sécurité tentent la reprise de contrôle.</li>
+<li><b>Classe Keter</b> : évacuation totale vers Abri 1, verrouillage Zone-Carcéral, appel Epsilon-11.</li>
+</ul>
+
+<h3>Instructions</h3>
+<ul>
+<li>Personnel non sécuritaire → bunker immédiatement.</li>
+<li>Recrues / Gardes / Soldats : maintien de l’ordre Zone-D.</li>
+<li>AIT : sécurisation, enquête, neutralisation.</li>
+<li>Colonels : supervision globale.</li>
+</ul>
+</div>
+
+<!-- DIPLOMATIQUE -->
+<div class="panel" id="diplo">
+<h2>PROTOCOLE DIPLOMATIQUE</h2>
+
+<ul>
+<li>Tout Groupe d’Intérêt (MLS / URN) → alerte + bunker général.</li>
+<li>Seul le Département des Affaires Externes est autorisé à négocier.</li>
+<li>Diplomates : aucune arme sauf bombe poivre.</li>
+<li>En période diplomatique, autorité supérieure sur L0 à L4.</li>
+<li>Hors période diplomatique : aucune autorité sur la sécurité.</li>
+<li>Prises d’otage GI → gestion diplomatique prioritaire.</li>
+</ul>
+</div>
+
+<!-- SCIENTIFIQUE -->
+<div class="panel" id="science">
+<h2>PROTOCOLE SCIENTIFIQUE</h2>
+
+<h3>Accès par classe</h3>
+<ul>
+<li><b>Sûr</b> : Assistant → Directeur Recherche</li>
+<li><b>Euclide</b> : Scientifique Titulaire +</li>
+<li><b>Keter</b> : Scientifique Expérimenté + autorisations</li>
+</ul>
+
+<h3>Exceptions</h3>
+<ul>
+<li>SCP-500 : aucune expérience autorisée</li>
+<li>SCP-008 / 149 / 939 : Conseil Scientifique requis</li>
+</ul>
+
+<h3>Amnésiques</h3>
+<ul>
+<li>Classe A : 6–12h (aérosol)</li>
+<li>Classe B : 20–72h</li>
+<li>Classe C : 4–9 jours</li>
+<li>Classe D : >3 semaines</li>
+<li>Classe E : effacement total</li>
+</ul>
+</div>
+
+<!-- PRIVÉ -->
+<div class="panel blue" id="private">
+<h2>DOSSIERS PRIVÉS</h2>
+<p>Accès refusé.</p>
+<p>Niveau d’habilitation insuffisant.</p>
+</div>
+
+  </div>
+</div>
+
+<div class="footer">
+Appuyer sur [BACKSPACE] pour retour
 </div>
 
 <script>
-const picker = document.getElementById('picker');
-const list = document.getElementById('list');
+function openPanel(id){
+  document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+  document.getElementById(id).style.display='block';
+}
 
-picker.addEventListener('change', () => {
-  list.innerHTML = '<p>Indexation en cours…</p>';
-  setTimeout(() => {
-    list.innerHTML = '';
-    [...picker.files].forEach(f => {
-      const div = document.createElement('div');
-      div.className = 'file';
-      div.textContent = f.webkitRelativePath;
-      list.appendChild(div);
-    });
-  }, 600);
+document.addEventListener('keydown',e=>{
+  if(e.key === "Backspace") history.back();
 });
 </script>
 
