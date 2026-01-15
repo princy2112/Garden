@@ -118,17 +118,6 @@ body::before{
   font-family:inherit;
 }
 
-/* LOCKSCREEN */
-#lockscreen{
-  position:fixed;
-  inset:0;
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:99999;
-}
-
 .lockbox{
   text-align:center;
   color:var(--red);
@@ -153,15 +142,6 @@ body::before{
 </head>
 
 <body>
-
-<!-- LOCKSCREEN -->
-<div id="lockscreen">
-  <div class="lockbox">
-    <p>AUTHENTIFICATION REQUISE</p>
-    <input type="password" id="pwd" placeholder="Mot de passe">
-    <div id="error"></div>
-  </div>
-</div>
 
 <!-- DESKTOP -->
 <div class="desktop">
@@ -237,23 +217,6 @@ input.addEventListener("keydown",e=>{
       cmd.innerHTML+="<div>> UNKNOWN COMMAND</div>";
     }
     input.value="";
-  }
-});
-
-/* LOCKSCREEN */
-const correctPassword="123456";
-const pwd=document.getElementById("pwd");
-const error=document.getElementById("error");
-const lock=document.getElementById("lockscreen");
-
-pwd.addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-    if(pwd.value===correctPassword){
-      lock.style.display="none";
-    }else{
-      error.textContent="ACCÈS REFUSÉ";
-      pwd.value="";
-    }
   }
 });
 </script>
