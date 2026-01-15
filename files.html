@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>FILE EXPLORER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#020202;
+  color:#ddd;
+  font-family:'Share Tech Mono', monospace;
+}
+
+.header{
+  padding:15px 20px;
+  border-bottom:1px solid #333;
+  color:#b30000;
+}
+
+.container{
+  padding:20px;
+}
+
+button{
+  background:black;
+  border:1px solid #b30000;
+  color:#b30000;
+  padding:8px 16px;
+  cursor:pointer;
+  font-family:inherit;
+}
+button:hover{
+  background:#b30000;
+  color:black;
+}
+
+.file{
+  margin-top:10px;
+  border-bottom:1px solid #222;
+  padding:6px 0;
+  font-size:.8rem;
+}
+
+.back-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  padding:6px 12px;
+  border:1px solid #b30000;
+  color:#b30000;
+  font-size:.7rem;
+  cursor:pointer;
+  background:rgba(0,0,0,.6);
+}
+.back-btn:hover{
+  background:#b30000;
+  color:black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="back-btn" onclick="history.back()">← RETOUR</div>
+
+<div class="header">
+  EXPLORATEUR DE FICHIERS — ACCÈS LOCAL
+</div>
+
+<div class="container">
+  <p>Sélectionner un dossier local :</p>
+  <input type="file" webkitdirectory multiple id="picker">
+
+  <div id="list"></div>
+</div>
+
+<script>
+const picker = document.getElementById('picker');
+const list = document.getElementById('list');
+
+picker.addEventListener('change', () => {
+  list.innerHTML = '<p>Indexation en cours…</p>';
+  setTimeout(() => {
+    list.innerHTML = '';
+    [...picker.files].forEach(f => {
+      const div = document.createElement('div');
+      div.className = 'file';
+      div.textContent = f.webkitRelativePath;
+      list.appendChild(div);
+    });
+  }, 600);
+});
+</script>
+
+</body>
+</html>
