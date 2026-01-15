@@ -2,17 +2,18 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>ARCHIVES // PROTOCOLES SCP</title>
+<title>DOSSIERS PUBLICS — SCP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --red:#b30000;
-  --blue:#0066cc;
+  --blue:#1e6cff;
   --bg:#050505;
   --panel:rgba(0,0,0,.75);
 }
+
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -36,10 +37,10 @@ body{
   pointer-events:none;
 }
 
-header{
+.header{
   padding:20px;
   border-bottom:1px solid #222;
-  color:var(--red);
+  color:var(--blue);
   font-size:.9rem;
 }
 
@@ -56,20 +57,15 @@ header{
 
 .folder{
   border:1px solid #333;
-  padding:10px;
-  margin-bottom:12px;
+  padding:12px;
+  margin-bottom:14px;
   cursor:pointer;
-  transition:.2s;
+  transition:.25s;
 }
 
 .folder:hover{
-  background:#120000;
-  box-shadow:0 0 8px var(--red);
-}
-
-.folder.blue:hover{
-  background:#001020;
-  box-shadow:0 0 8px var(--blue);
+  background:#0a1225;
+  box-shadow:0 0 10px var(--blue);
 }
 
 .folder span{
@@ -87,22 +83,14 @@ header{
 .panel{
   display:none;
   background:var(--panel);
-  border:1px solid var(--red);
+  border:1px solid var(--blue);
   padding:25px;
-  animation:fade .4s ease;
-}
-
-.panel.blue{
-  border-color:var(--blue);
+  animation:fade .35s ease;
 }
 
 .panel h2{
-  color:var(--red);
-  margin-top:0;
-}
-
-.panel.blue h2{
   color:var(--blue);
+  margin-top:0;
 }
 
 .panel h3{
@@ -116,7 +104,7 @@ header{
   opacity:.9;
 }
 
-ul{padding-left:18px;}
+ul{padding-left:18px}
 
 .footer{
   position:fixed;
@@ -127,7 +115,7 @@ ul{padding-left:18px;}
 }
 
 @keyframes fade{
-  from{opacity:0; transform:translateY(5px)}
+  from{opacity:0; transform:translateY(6px)}
   to{opacity:1}
 }
 </style>
@@ -135,115 +123,91 @@ ul{padding-left:18px;}
 
 <body class="scan">
 
-<header>
-ARCHIVES PUBLIQUES — ACCÈS NIVEAU 2
-</header>
+<div class="header">
+DOSSIERS PUBLICS — ACCÈS AUTORISÉ
+</div>
 
 <div class="container">
 
-  <div class="sidebar">
+<div class="sidebar">
 
-    <div class="folder" onclick="openPanel('deconf')">
-      📁 Protocole de Déconfinement
-      <span>Urgence / Sécurité</span>
-    </div>
-
-    <div class="folder" onclick="openPanel('diplo')">
-      📁 Protocole Diplomatique
-      <span>Affaires Externes</span>
-    </div>
-
-    <div class="folder" onclick="openPanel('science')">
-      📁 Protocole Scientifique
-      <span>Département Recherche</span>
-    </div>
-
-    <div class="folder blue" onclick="openPanel('private')">
-      🔵 Dossiers Privés
-      <span>Accès restreint</span>
-    </div>
-
+  <div class="folder" onclick="openPanel('deconf')">
+    📁 Déconfinement
+    <span>Procédures de crise</span>
   </div>
 
-  <div class="content">
+  <div class="folder" onclick="openPanel('diplo')">
+    📁 Diplomatique
+    <span>Affaires externes</span>
+  </div>
+
+  <div class="folder" onclick="openPanel('science')">
+    📁 Scientifique
+    <span>Recherche & expérimentation</span>
+  </div>
+
+</div>
+
+<div class="content">
 
 <!-- DÉCONFINEMENT -->
 <div class="panel" id="deconf">
-<h2>PROTOCOLE DE DÉCONFINEMENT</h2>
+<h2>PROTOCOLES DE DÉCONFINEMENT</h2>
 
 <p>
-En cas de déconfinement d’un SCP (hors classe Sûr), un avertissement radio doit être immédiatement émis afin de prévenir :
+En cas de déconfinement d’un SCP (hors classification Sûr), un avertissement radio doit être émis afin de prévenir l’Administration et la Haute-Sécurité.
 </p>
-
-<ul>
-<li>Administration du site (Co-Directeur +)</li>
-<li>Haute Sécurité (AIT, CLN, DDLS)</li>
-</ul>
 
 <h3>Réponses</h3>
 <ul>
-<li><b>Classe Euclide</b> : équipes tactiques et sécurité tentent la reprise de contrôle.</li>
-<li><b>Classe Keter</b> : évacuation totale vers Abri 1, verrouillage Zone-Carcéral, appel Epsilon-11.</li>
+<li><b>Euclide</b> : contrôle de zone par équipes tactiques.</li>
+<li><b>Keter</b> : évacuation générale, bunker Abri 1, appel Epsilon-11.</li>
 </ul>
 
 <h3>Instructions</h3>
 <ul>
-<li>Personnel non sécuritaire → bunker immédiatement.</li>
+<li>Personnel non sécuritaire → Abri 1.</li>
 <li>Recrues / Gardes / Soldats : maintien de l’ordre Zone-D.</li>
 <li>AIT : sécurisation, enquête, neutralisation.</li>
-<li>Colonels : supervision globale.</li>
+<li>Colonels : supervision et coordination.</li>
 </ul>
 </div>
 
 <!-- DIPLOMATIQUE -->
 <div class="panel" id="diplo">
-<h2>PROTOCOLE DIPLOMATIQUE</h2>
+<h2>PROTOCOLES DIPLOMATIQUES</h2>
 
 <ul>
-<li>Tout Groupe d’Intérêt (MLS / URN) → alerte + bunker général.</li>
-<li>Seul le Département des Affaires Externes est autorisé à négocier.</li>
-<li>Diplomates : aucune arme sauf bombe poivre.</li>
-<li>En période diplomatique, autorité supérieure sur L0 à L4.</li>
-<li>Hors période diplomatique : aucune autorité sur la sécurité.</li>
+<li>Présence de Groupe d’Intérêt → alarme + bunker.</li>
+<li>Seul le DAE peut engager des négociations.</li>
+<li>Diplomates non armés (bombe poivre autorisée).</li>
+<li>Autorité diplomatique valable uniquement en période active.</li>
 <li>Prises d’otage GI → gestion diplomatique prioritaire.</li>
 </ul>
 </div>
 
 <!-- SCIENTIFIQUE -->
 <div class="panel" id="science">
-<h2>PROTOCOLE SCIENTIFIQUE</h2>
+<h2>PROTOCOLES SCIENTIFIQUES</h2>
 
-<h3>Accès par classe</h3>
+<h3>Accès par classe SCP</h3>
 <ul>
-<li><b>Sûr</b> : Assistant → Directeur Recherche</li>
-<li><b>Euclide</b> : Scientifique Titulaire +</li>
-<li><b>Keter</b> : Scientifique Expérimenté + autorisations</li>
-</ul>
-
-<h3>Exceptions</h3>
-<ul>
-<li>SCP-500 : aucune expérience autorisée</li>
-<li>SCP-008 / 149 / 939 : Conseil Scientifique requis</li>
+<li>Sûr : personnel scientifique habilité.</li>
+<li>Euclide : Scientifique Titulaire +.</li>
+<li>Keter : Scientifique Expérimenté + autorisations.</li>
 </ul>
 
 <h3>Amnésiques</h3>
 <ul>
-<li>Classe A : 6–12h (aérosol)</li>
-<li>Classe B : 20–72h</li>
-<li>Classe C : 4–9 jours</li>
-<li>Classe D : >3 semaines</li>
-<li>Classe E : effacement total</li>
+<li>A : 6–12h</li>
+<li>B : 20–72h</li>
+<li>C : 4–9 jours</li>
+<li>D : >3 semaines</li>
+<li>E : effacement total</li>
 </ul>
 </div>
 
-<!-- PRIVÉ -->
-<div class="panel blue" id="private">
-<h2>DOSSIERS PRIVÉS</h2>
-<p>Accès refusé.</p>
-<p>Niveau d’habilitation insuffisant.</p>
 </div>
-
-  </div>
 </div>
 
 <div class="footer">
